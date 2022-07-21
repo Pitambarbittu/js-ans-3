@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day-1-interview-ans</title>
+</head>
+<body style="background-color: black; color: white; ">
+    
+   <h3>1. What are promises and why do we need them?</h3>
+<p>
+    
+A Promise is a proxy for a value not necessarily known when the promise is created. <br>
+ It allows you to associate handlers with an asynchronous action's eventual success value or failure reason. <br>
+  This lets asynchronous methods return values like synchronous methods: instead of immediately returning the final value, <br>
+   the asynchronous method returns a promise to supply the value at some point in the future. <br><br>
+   Benefits of Promises  <br>
+
+1.	Improves Code Readability <br>
+2.	Better handling of asynchronous operations <br>
+3.	Better flow of control definition in asynchronous logic <br>
+4.	Better Error Handling 
+</p>
+<h4>Example--</h4>
+<pre>
+    var promise=new Promise(function(resolve,reject){
+        let x=10;
+        let y=10;
+        if(x===y){
+            resolve();
+        }
+        else{
+            reject();
+        }
+    })
+    promise.then(function(){
+        console.log("equal");
+    }).catch(function(){
+        console.log("not equal")
+    });
+</pre>
+
+<h3>2. What is the purpose of async/await keywords?</h3>
+<p>
+    
+An async function is a function declared with the async keyword, and the await keyword is permitted within it. <br>
+ The async and await keywords enable asynchronous, promise-based behavior to be written in a cleaner style, <br>
+  avoiding the need to explicitly configure promise chains.
+
+</p>
+<h4>Example--</h4>
+<pre>
+    async function f() {
+
+        let promise = new Promise((resolve, reject) => {
+          setTimeout(() => resolve("done!"), 1000)
+        });
+      
+        let result = await promise; // wait until the promise resolves (*)
+      
+        alert(result); // "done!"
+      }
+      
+      f();
+</pre>
+<h3>3. What is hoisting?</h3>
+<p>Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution. <br>
+     JavaScript only hoists declarations, not initialisation.</p>
+     <pre>
+        console.log(hello); //output : undefined
+          var hello = 'The variable Has been hoisted';
+</pre>
+<p>The above code looks like as below to the interpreter,</p>
+<pre>
+    var hello;
+console.log(hello);
+hello = 'The variable Has been hoisted';
+
+</pre>
+<h3>4. What is the DOM?</h3>
+<p>
+    DOM stands for Document Object Model,(DOM) is a programming interface for web documents. <br>
+     It represents the page so that programs can change the document structure, style, and content. <br>
+      The DOM represents the document as nodes and objects; that way, programming languages can interact with the page.
+</p>
+<h3>5.  Difference between undefined vs not defined vs NaN</h3>
+<p>Undefined- <br>
+    undefined is a global variable that JavaScript creates at run time. <br>
+     JavaScript assigns undefined to any variable that has been declared but not initialized or defined.
+   </p>
+   <pre>
+    let hello;
+    console.log(hello); //Undefined
+   </pre>
+   <p>Not defined- <br>
+    A not defined is a variable that is not declared at a given point of time with declaration keyword like var, let, or const.
+ </p>
+ <pre>
+    let hello = 25;
+console.log(hi) // hi is not defined
+ </pre>
+ <p> NaN- <br>
+   it is "not a number".it represents a value which is not a valid number.
+ </p>
+ <pre>
+    console.log("hi"/5);//NaN
+    console.log(Math.sqrt(-1))//nan
+ </pre>
+ <h3>6. How many operators do we have in JS ?</h3>
+ <p>
+    We have 6 types of operators in JS they are <br> <br>
+
+    1.	Arithmetic Operators <br>
+    2.	Comparison Operators <br>
+    3.	Logical Operators <br>
+    4.	Assignment Operators <br>
+    5.	Conditional Operators <br>
+    6.	Ternary Operator
+    </p>
+    <h3>7. What are pure functions?</h3>
+    <p>
+        Pure Function is a function (a block of code ) that always returns the same result if the same arguments are passed. <br>
+         It does not depend on any state, or data change during a program’s execution rather it only depends on its input arguments.
+    </p>
+    <pre>
+        function pure(i) {
+            console.log(i * 4);//it will always return 16 for input 4.
+          }
+          pure(4);
+               
+    </pre>
+    <h3>8. What is callback hell</h3>
+    <p>
+        Callback Hell is an anti-pattern with multiple nested callbacks <br>
+         which makes code hard to read and debug when dealing with asynchronous logic.
+    </p>
+    <pre>
+        function printNums(){
+            setTimeout(()=>{
+                console.log("1");
+                setTimeout(()=>{
+                    console.log("2");
+                    setTimeout(()=>{
+                        console.log("3");
+        
+                        setTimeout(()=>{
+                            console.log("4");
+        
+                            setTimeout(()=>{
+                                console.log("5");
+                              setTimeout(()=>{
+                                  console.log("6");
+        
+                                  setTimeout(()=>{
+                                      console.log("7");
+                                     
+                                          console.log("End of Callback hell");
+                                
+                                  },1000)
+                              },1000)
+                            },1000)
+                        },1000);
+                    },1000);
+                },1000);
+            },1000);
+        }
+       
+       printNums()
+        
+    </pre>
+      
+    <h3>9. What is promise chaining</h3>
+    <p>
+        What is promise chaining
+    </p>
+    <pre>
+        new Promise(function(resolve, reject) {
+
+            setTimeout(() => resolve(1), 1000);
+          
+          }).then(function(result) {
+          
+            console.log(result); // 1
+            return result * 2;
+          
+          }).then(function(result) {
+          
+            console.log(result); // 2
+            return result * 3;
+          
+          }).then(function(result) {
+          
+            console.log(result); // 6
+            return result * 4;
+          
+          });
+          
+          
+    </pre>
+
+    <h3>10. What are arrow functions?</h3>
+    <p>
+        it is one of the featured introduced in ES6 version of js.it is basically an alterante to the regular function expression.
+        it allows us to create function in a cleaner way.
+        it is also an anonymous function since it doesnt have any name.
+    </p>
+    <pre>
+        let x = function(x, y) {
+            return x * y;
+        }
+     x(4,5)
+            
+    </pre>
+    <h3>11. Give an example of async/await</h3>
+    <pre>
+        async function foo(){
+            let promise=new Promise(function(resolve,reject){
+                setTimeout(()=>resolve("resolved"),2000);
+            })
+            let result=await promise;
+            console.log(result);
+        }
+        foo();
+        // expected output: "resolved"
+
+    </pre>
+
+
+
+</body>
+</html>
